@@ -143,6 +143,7 @@ interface XRAnchor {
   readonly attribute XRSpace anchorSpace;
 
   [NewObject] Promise<DOMString> requestPersistentHandle();
+  Promise<undefined> deletePersistence();
   undefined delete();
 };
 </script>
@@ -168,20 +169,29 @@ In order to <dfn>create new anchor object</dfn> from |native origin| and |sessio
 <div class="algorithm" data-algorithm="restore-anchor-from-frame">
 The {{XRAnchor/requestPersistentHandle()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=].
-    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. If |anchor|'s [=XRAnchor/deleted=] is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |anchor|'s [=XRAnchor/session=].
     1. If |session|'s [=XRSession/map of persistent anchors=] contains the value |anchor|, run the following steps:
         1. Let |uuid| be the key of the mapping of the |anchor| value on |session|'s [=XRSession/map of persistent anchors=].
-        1. Add a mapping from |uuid| to |promise|.
+        1. Add a mapping from |uuid| to |anchor|.
         1. Return |promise|.
         1. Abort these steps.
-    1. Ask the {{XRsystem}} to create a new unique ID |uuid|.
+    1. Ask the {{XRSystem}} to create a new unique ID |uuid|.
     1. Add |uuid| and |anchor| to |session|'s [=XRSession/map of persistent anchors=].
     1. Return |promise|.
 </div>
 
-Note: when the {{XRSystem}} create the unique ID, it MUST be unique and only known to the current origin.
+Note: when the {{XRSystem}} creates the unique ID, it MUST be unique and only known to the current origin.
+
+<div class="algorithm" data-algorithm="delete-peristence-from-anchor">
+The {{XRAnchor/deletePersistence()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
+    1. Let |promise| be [=a new Promise=].
+    1. If |anchor|'s [=XRAnchor/deleted=] is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. Let |session| be |anchor|'s [=XRAnchor/session=].
+    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].
+    1. Return |promise|.
+</div>
 
 TODO: clarify this.
 
@@ -198,7 +208,6 @@ The {{XRSession}} is extended to contain an associated <dfn for=XRSession>map of
 partial interface XRFrame {
   Promise<XRAnchor> createAnchor(XRRigidTransform pose, XRSpace space);
   Promise<XRAnchor> restorePersistentAnchor(DOMString uuid);
-  Promise<void> deletePersistentAnchor(DOMString uuid);
 };
 
 partial interface XRHitTestResult {
@@ -241,16 +250,6 @@ The {{XRFrame/restorePersistentAnchor(uuid)}} method, when invoked on an {{XRFra
     1. If |session|'s [=XRSession/map of new anchors=] contains a mapping from |anchor| to |promise|, [=/reject=] the |promise| and abort these steps.
     1. Add |anchor| to |session|'s [=XRSession/set of tracked anchors=].
     1. Add a mapping from |anchor| to |promise| to |session|'s [=XRSession/map of new anchors=].
-    1. Return |promise|.
-</div>
-
-<div class="algorithm" data-algorithm="delete-anchor-from-frame">
-The {{XRFrame/deletePersistentAnchor(uuid)}} method, when invoked on an {{XRFrame}} |frame| with |uuid|, MUST run the following steps:
-    1. Let |promise| be [=a new Promise=].
-    1. If |frame|'s [=XRFrame/active=] boolean is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
-    1. Let |session| be |frame|'s [=XRFrame/session=].
-    1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping from |uuid| with {{InvalidStateError}}, return |promise|, and abort these steps.
-    1. Remove the mapping from [=XRSession/map of persistent anchors=] to |uuid|.
     1. Return |promise|.
 </div>
 

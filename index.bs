@@ -170,7 +170,7 @@ In order to <dfn>create new anchor object</dfn> from |native origin| and |sessio
 <div class="algorithm" data-algorithm="restore-anchor-from-frame">
 The {{XRAnchor/requestPersistentHandle()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. If |anchor|'s [=XRAnchor/deleted=] is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |anchor|'s [=XRAnchor/deleted=] is <code>true</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |anchor|'s [=XRAnchor/session=].
     1. If |session|'s [=XRSession/map of persistent anchors=] contains the value |anchor|, run the following steps:
         1. Let |uuid| be the key of the mapping of the |anchor| value on |session|'s [=XRSession/map of persistent anchors=].
@@ -189,7 +189,7 @@ Note: when the {{XRSystem}} creates the unique ID, it MUST be unique and only kn
 <div class="algorithm" data-algorithm="delete-peristence-from-anchor">
 The {{XRAnchor/deletePersistence()}} method, when invoked on an {{XRAnchor}} |anchor|, MUST run the following steps:
     1. Let |promise| be [=a new Promise=] in the [=relevant realm=] of this {{XRSystem}}.
-    1. If |anchor|'s [=XRAnchor/deleted=] is <code>false</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
+    1. If |anchor|'s [=XRAnchor/deleted=] is <code>true</code>, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Let |session| be |anchor|'s [=XRAnchor/session=].
     1. If |session|'s [=XRSession/map of persistent anchors=] does not contain a mapping to |anchor|, [=/reject=] |promise| with {{InvalidStateError}}, return |promise|, and abort these steps.
     1. Remove the mapping from |session|'s [=XRSession/map of persistent anchors=].

@@ -1025,11 +1025,13 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise③">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm②">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem③">XRSystem</a></code>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject④">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+     <li data-md>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="https://w3c.github.io/mediacapture-main/#track-ended" id="ref-for-track-ended">ended</a> value is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject④">reject</a> the <var>promise</var> and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑥">reject</a> the <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑦">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>Add <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors①">set of tracked anchors</a>.</p>
      <li data-md>
@@ -1047,7 +1049,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>frame</var> be <var>hitTestResult</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/hit-test/#xrhittestresult-frame" id="ref-for-xrhittestresult-frame">frame</a>.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active①">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active①">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑦">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑧">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a>.</p>
      <li data-md>
@@ -1129,7 +1131,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          <li data-md>
           <p>Remove <var>anchor</var> from the <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors④">set of tracked anchors</a>.</p>
          <li data-md>
-          <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors④">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑥">reject</a> the <var>promise</var> and remove the mapping.</p>
+          <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors④">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑧">reject</a> the <var>promise</var> and remove the mapping.</p>
          <li data-md>
           <p>Continue to the next entry in <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors⑤">set of tracked anchors</a>.</p>
         </ol>
@@ -1276,6 +1278,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-concept-relevant-realm②">4. Anchor creation</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="term-for-track-ended">
+   <a href="https://w3c.github.io/mediacapture-main/#track-ended">https://w3c.github.io/mediacapture-main/#track-ended</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-track-ended">4. Anchor creation</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-idl-DOMString">
    <a href="https://webidl.spec.whatwg.org/#idl-DOMString">https://webidl.spec.whatwg.org/#idl-DOMString</a><b>Referenced in:</b>
    <ul>
@@ -1294,7 +1302,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-invalidstateerror">3.1. XRAnchor</a> <a href="#ref-for-invalidstateerror①">(2)</a> <a href="#ref-for-invalidstateerror②">(3)</a> <a href="#ref-for-invalidstateerror③">(4)</a>
-    <li><a href="#ref-for-invalidstateerror④">4. Anchor creation</a> <a href="#ref-for-invalidstateerror⑤">(2)</a> <a href="#ref-for-invalidstateerror⑥">(3)</a>
+    <li><a href="#ref-for-invalidstateerror④">4. Anchor creation</a> <a href="#ref-for-invalidstateerror⑤">(2)</a> <a href="#ref-for-invalidstateerror⑥">(3)</a> <a href="#ref-for-invalidstateerror⑦">(4)</a> <a href="#ref-for-invalidstateerror⑧">(5)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-NewObject">
@@ -1333,8 +1341,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <a href="https://webidl.spec.whatwg.org/#reject">https://webidl.spec.whatwg.org/#reject</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-reject">3.1. XRAnchor</a> <a href="#ref-for-reject①">(2)</a> <a href="#ref-for-reject②">(3)</a>
-    <li><a href="#ref-for-reject③">4. Anchor creation</a> <a href="#ref-for-reject④">(2)</a> <a href="#ref-for-reject⑤">(3)</a>
-    <li><a href="#ref-for-reject⑥">5. Anchor updates</a>
+    <li><a href="#ref-for-reject③">4. Anchor creation</a> <a href="#ref-for-reject④">(2)</a> <a href="#ref-for-reject⑤">(3)</a> <a href="#ref-for-reject⑥">(4)</a> <a href="#ref-for-reject⑦">(5)</a>
+    <li><a href="#ref-for-reject⑧">5. Anchor updates</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-resolve">
@@ -1499,6 +1507,11 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li><span class="dfn-paneled" id="term-for-concept-relevant-realm">relevant realm</span>
     </ul>
    <li>
+    <a data-link-type="biblio">[mediacapture-streams]</a> defines the following terms:
+    <ul>
+     <li><span class="dfn-paneled" id="term-for-track-ended">ended</span>
+    </ul>
+   <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
      <li><span class="dfn-paneled" id="term-for-idl-DOMString">DOMString</span>
@@ -1557,6 +1570,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <dl>
    <dt id="biblio-html">[HTML]
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/"><cite>HTML Standard</cite></a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+   <dt id="biblio-mediacapture-streams">[MEDIACAPTURE-STREAMS]
+   <dd>Cullen Jennings; et al. <a href="https://www.w3.org/TR/mediacapture-streams/"><cite>Media Capture and Streams</cite></a>. 30 June 2022. CR. URL: <a href="https://www.w3.org/TR/mediacapture-streams/">https://www.w3.org/TR/mediacapture-streams/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
    <dt id="biblio-rfc4122">[RFC4122]

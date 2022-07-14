@@ -972,7 +972,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </div>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise③"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①⓪"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="createAnchor(pose, space)" id="dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></dfn>(<a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform" id="ref-for-xrrigidtransform"><c- n>XRRigidTransform</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code><a class="self-link" href="#dom-xrframe-createanchor-pose-space-pose"></a></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/createAnchor(pose, space)" data-dfn-type="argument" data-export id="dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code><a class="self-link" href="#dom-xrframe-createanchor-pose-space-space"></a></dfn>);
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise④"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①①"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="restorePersistentAnchor(uuid)" id="dom-xrframe-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/restorePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrframe-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrframe-restorepersistentanchor-uuid-uuid"></a></dfn>);
+};
+
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession③"><c- g>XRSession</c-></a> {
+  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise" id="ref-for-idl-promise④"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①①"><c- n>XRAnchor</c-></a>> <dfn class="dfn-paneled idl-code" data-dfn-for="XRSession" data-dfn-type="method" data-export data-lt="restorePersistentAnchor(uuid)" id="dom-xrsession-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></dfn>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString" id="ref-for-idl-DOMString①"><c- b>DOMString</c-></a> <dfn class="idl-code" data-dfn-for="XRSession/restorePersistentAnchor(uuid)" data-dfn-type="argument" data-export id="dom-xrsession-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code><a class="self-link" href="#dom-xrsession-restorepersistentanchor-uuid-uuid"></a></dfn>);
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult"><c- g>XRHitTestResult</c-></a> {
@@ -1017,20 +1020,16 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </div>
    <p class="note" role="note"><span>Note:</span> It is the responsibility of user agents to ensure that the physical origin tracked by the anchor returned by each <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor②">createAnchor(pose, space)</a></code> call aligns as closely as possible with the physical location of <var>pose</var> within <var>space</var> at the time represented by the frame on which the method is called. Specifically, this means that for spaces that are dynamically changing, user agents should attempt to capture the native origin of such spaces at the app’s specified time. This text is non-normative, but expresses the intent of the specification author(s) and contributors and thus it is highly recommended that it is followed by the implementations to ensure consistent behavior across different vendors.</p>
    <div class="algorithm" data-algorithm="restore-persistent-anchor-from-frame">
-     The <code class="idl"><a data-link-type="idl" href="#dom-xrframe-restorepersistentanchor" id="ref-for-dom-xrframe-restorepersistentanchor">restorePersistentAnchor(uuid)</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③">XRFrame</a></code> <var>frame</var> with <var>uuid</var>, MUST run the following steps: 
+     The <code class="idl"><a data-link-type="idl" href="#dom-xrsession-restorepersistentanchor" id="ref-for-dom-xrsession-restorepersistentanchor">restorePersistentAnchor(uuid)</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession④">XRSession</a></code> <var>session</var> with <var>uuid</var>, MUST run the following steps: 
     <ol>
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise③">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm②">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem③">XRSystem</a></code>.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active①">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject④">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
-     <li data-md>
-      <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a>.</p>
-     <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> the <var>promise</var> and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors①">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject④">reject</a> the <var>promise</var> and abort these steps.</p>
      <li data-md>
       <p>Add <var>anchor</var> to <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors①">set of tracked anchors</a>.</p>
      <li data-md>
@@ -1048,9 +1047,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>frame</var> be <var>hitTestResult</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/hit-test/#xrhittestresult-frame" id="ref-for-xrhittestresult-frame">frame</a>.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active②">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑥">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑦">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrframe-active" id="ref-for-xrframe-active①">active</a> boolean is <code>false</code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
-      <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session②">session</a>.</p>
+      <p>Let <var>session</var> be <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a>.</p>
      <li data-md>
       <p>Add <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors①">update anchors</a> algorithm to <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-list-of-frame-updates" id="ref-for-xrsession-list-of-frame-updates①">list of frame updates</a> if it is not already present there.</p>
      <li data-md>
@@ -1106,17 +1105,17 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①③"><c- n>XRAnchor</c-></a>>;
 };
 
-<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe④"><c- g>XRFrame</c-></a> {
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③"><c- g>XRFrame</c-></a> {
   [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#xranchorset" id="ref-for-xranchorset"><c- n>XRAnchorSet</c-></a> <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="attribute" data-export data-readonly data-type="XRAnchorSet" id="dom-xrframe-trackedanchors"><code><c- g>trackedAnchors</c-></code></dfn>;
 };
 </pre>
    <p>An <code class="idl"><a data-link-type="idl" href="#xranchorset" id="ref-for-xranchorset①">XRAnchorSet</a></code> interface is introduced as a way to expose a collection of anchors.</p>
-   <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑤">XRFrame</a></code> is extended to contain a <code class="idl"><a data-link-type="idl" href="#dom-xrframe-trackedanchors" id="ref-for-dom-xrframe-trackedanchors">trackedAnchors</a></code> attribute which contains all anchors still tracked in the frame. At <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑥">XRFrame</a></code> creation, the set is initially empty and will be populated by the <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors②">update anchors</a> algorithm.</p>
+   <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe④">XRFrame</a></code> is extended to contain a <code class="idl"><a data-link-type="idl" href="#dom-xrframe-trackedanchors" id="ref-for-dom-xrframe-trackedanchors">trackedAnchors</a></code> attribute which contains all anchors still tracked in the frame. At <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑤">XRFrame</a></code> creation, the set is initially empty and will be populated by the <a data-link-type="dfn" href="#update-anchors" id="ref-for-update-anchors②">update anchors</a> algorithm.</p>
    <div class="algorithm" data-algorithm="update-anchors">
      In order to <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="update-anchors">update anchors</dfn> for <var>frame</var>, the user agent MUST run the following steps: 
     <ol>
      <li data-md>
-      <p>Let <var>session</var> be a <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session③">session</a>.</p>
+      <p>Let <var>session</var> be a <var>frame</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session②">session</a>.</p>
      <li data-md>
       <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device②">XR device</a>.</p>
      <li data-md>
@@ -1130,7 +1129,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
          <li data-md>
           <p>Remove <var>anchor</var> from the <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors④">set of tracked anchors</a>.</p>
          <li data-md>
-          <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors④">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑦">reject</a> the <var>promise</var> and remove the mapping.</p>
+          <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-new-anchors" id="ref-for-xrsession-map-of-new-anchors④">map of new anchors</a> contains a mapping from <var>anchor</var> to <var>promise</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑥">reject</a> the <var>promise</var> and remove the mapping.</p>
          <li data-md>
           <p>Continue to the next entry in <var>session</var>’s <a data-link-type="dfn" href="#xrsession-set-of-tracked-anchors" id="ref-for-xrsession-set-of-tracked-anchors⑤">set of tracked anchors</a>.</p>
         </ol>
@@ -1153,7 +1152,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Set <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted⑤">deleted</a> to <code>true</code>.</p>
      <li data-md>
-      <p>Let <var>session</var> be an <var>anchor</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session④">session</a>.</p>
+      <p>Let <var>session</var> be an <var>anchor</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session③">session</a>.</p>
      <li data-md>
       <p>Let <var>device</var> be a <var>session</var>’s <a data-link-type="dfn" href="https://www.w3.org/TR/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device③">XR device</a>.</p>
      <li data-md>
@@ -1188,7 +1187,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li data-md>
      <p>Optionally, native anchors can be <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="attached">attached</dfn> to native entities. A native anchor that is attached to a native entity attempts to maintain its position fixed relative to the entity to which it is attached (as opposed to the real world in case of free-floating anchors). When the device detects that the pose of the object to which the anchor is attached changes, the anchor will be updated accordingly. This does not imply that the object itself moved - it may be that the system’s understanding of its location changed. If the underlying system is capable of tracking moving objects, the native anchors attached to moving objects should be updated as well.</p>
    </ul>
-   <p>In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emulated-native-anchors">emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑦">XRFrame</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor④">createAnchor(pose, space)</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult④">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor②">createAnchor()</a></code>.</p>
+   <p>In case the underlying device does not support native anchors, the user agents MAY decide to implement the anchors API through <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="emulated-native-anchors">emulated native anchors</dfn>. This approach assumes that anchors, once created, never change their pose, and their pose is the pose passed in by the application to the anchor creation methods such as <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe⑥">XRFrame</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrframe-createanchor" id="ref-for-dom-xrframe-createanchor④">createAnchor(pose, space)</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/hit-test/#xrhittestresult" id="ref-for-xrhittestresult④">XRHitTestResult</a></code>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhittestresult-createanchor" id="ref-for-dom-xrhittestresult-createanchor②">createAnchor()</a></code>.</p>
    <p class="note" role="note"><span>Note:</span> The <a data-link-type="dfn" href="#emulated-native-anchors" id="ref-for-emulated-native-anchors">emulated native anchors</a> approach is equivalent to the applications emulating the anchors feature themselves and can help reduce the number of different cases that the applications need to handle. It might also allow the applications to re-use the same code for <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar①">"immersive-ar"</a></code> and <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> sessions.</p>
    <h2 class="heading settled" data-level="8" id="privacy-security"><span class="secno">8. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
    <section class="non-normative">
@@ -1261,7 +1260,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <li><a href="#xrhittestresult-native-entity">native entity</a><span>, in § 4</span>
    <li><a href="#xranchor-native-origin">native origin</a><span>, in § 3.1</span>
    <li><a href="#dom-xranchor-requestpersistenthandle">requestPersistentHandle()</a><span>, in § 3.1</span>
-   <li><a href="#dom-xrframe-restorepersistentanchor">restorePersistentAnchor(uuid)</a><span>, in § 4</span>
+   <li><a href="#dom-xrsession-restorepersistentanchor">restorePersistentAnchor(uuid)</a><span>, in § 4</span>
    <li><a href="#xranchor-session">session</a><span>, in § 3.1</span>
    <li><a href="#xrsession-set-of-tracked-anchors">set of tracked anchors</a><span>, in § 4</span>
    <li><a href="#tracked">tracked</a><span>, in § 7.1</span>
@@ -1295,7 +1294,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-invalidstateerror">3.1. XRAnchor</a> <a href="#ref-for-invalidstateerror①">(2)</a> <a href="#ref-for-invalidstateerror②">(3)</a> <a href="#ref-for-invalidstateerror③">(4)</a>
-    <li><a href="#ref-for-invalidstateerror④">4. Anchor creation</a> <a href="#ref-for-invalidstateerror⑤">(2)</a> <a href="#ref-for-invalidstateerror⑥">(3)</a> <a href="#ref-for-invalidstateerror⑦">(4)</a>
+    <li><a href="#ref-for-invalidstateerror④">4. Anchor creation</a> <a href="#ref-for-invalidstateerror⑤">(2)</a> <a href="#ref-for-invalidstateerror⑥">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-NewObject">
@@ -1334,8 +1333,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <a href="https://webidl.spec.whatwg.org/#reject">https://webidl.spec.whatwg.org/#reject</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-reject">3.1. XRAnchor</a> <a href="#ref-for-reject①">(2)</a> <a href="#ref-for-reject②">(3)</a>
-    <li><a href="#ref-for-reject③">4. Anchor creation</a> <a href="#ref-for-reject④">(2)</a> <a href="#ref-for-reject⑤">(3)</a> <a href="#ref-for-reject⑥">(4)</a>
-    <li><a href="#ref-for-reject⑦">5. Anchor updates</a>
+    <li><a href="#ref-for-reject③">4. Anchor creation</a> <a href="#ref-for-reject④">(2)</a> <a href="#ref-for-reject⑤">(3)</a>
+    <li><a href="#ref-for-reject⑥">5. Anchor updates</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-resolve">
@@ -1360,9 +1359,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="term-for-xrframe">
    <a href="https://immersive-web.github.io/webxr/#xrframe">https://immersive-web.github.io/webxr/#xrframe</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrframe">4. Anchor creation</a> <a href="#ref-for-xrframe①">(2)</a> <a href="#ref-for-xrframe②">(3)</a> <a href="#ref-for-xrframe③">(4)</a>
-    <li><a href="#ref-for-xrframe④">5. Anchor updates</a> <a href="#ref-for-xrframe⑤">(2)</a> <a href="#ref-for-xrframe⑥">(3)</a>
-    <li><a href="#ref-for-xrframe⑦">7.1. Native anchor</a>
+    <li><a href="#ref-for-xrframe">4. Anchor creation</a> <a href="#ref-for-xrframe①">(2)</a> <a href="#ref-for-xrframe②">(3)</a>
+    <li><a href="#ref-for-xrframe③">5. Anchor updates</a> <a href="#ref-for-xrframe④">(2)</a> <a href="#ref-for-xrframe⑤">(3)</a>
+    <li><a href="#ref-for-xrframe⑥">7.1. Native anchor</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrrigidtransform">
@@ -1374,7 +1373,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="term-for-xrsession">
    <a href="https://immersive-web.github.io/webxr/#xrsession">https://immersive-web.github.io/webxr/#xrsession</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrsession">4. Anchor creation</a> <a href="#ref-for-xrsession①">(2)</a> <a href="#ref-for-xrsession②">(3)</a>
+    <li><a href="#ref-for-xrsession">4. Anchor creation</a> <a href="#ref-for-xrsession①">(2)</a> <a href="#ref-for-xrsession②">(3)</a> <a href="#ref-for-xrsession③">(4)</a> <a href="#ref-for-xrsession④">(5)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrspace">
@@ -1394,7 +1393,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <aside class="dfn-panel" data-for="term-for-xrframe-active">
    <a href="https://www.w3.org/TR/webxr/#xrframe-active">https://www.w3.org/TR/webxr/#xrframe-active</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrframe-active">4. Anchor creation</a> <a href="#ref-for-xrframe-active①">(2)</a> <a href="#ref-for-xrframe-active②">(3)</a>
+    <li><a href="#ref-for-xrframe-active">4. Anchor creation</a> <a href="#ref-for-xrframe-active①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-capable-of-supporting">
@@ -1582,7 +1581,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
   <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrframe-createanchor"><code><c- g>createAnchor</c-></code></a>(<a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrrigidtransform"><c- n>XRRigidTransform</c-></a> <a href="#dom-xrframe-createanchor-pose-space-pose"><code><c- g>pose</c-></code></a>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-createanchor-pose-space-space"><code><c- g>space</c-></code></a>);
-  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrframe-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a href="#dom-xrframe-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code></a>);
+};
+
+<c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrsession"><c- g>XRSession</c-></a> {
+  <a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-promise"><c- b>Promise</c-></a>&lt;<a data-link-type="idl-name" href="#xranchor"><c- n>XRAnchor</c-></a>> <a href="#dom-xrsession-restorepersistentanchor"><code><c- g>restorePersistentAnchor</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://webidl.spec.whatwg.org/#idl-DOMString"><c- b>DOMString</c-></a> <a href="#dom-xrsession-restorepersistentanchor-uuid-uuid"><code><c- g>uuid</c-></code></a>);
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/hit-test/#xrhittestresult"><c- g>XRHitTestResult</c-></a> {
@@ -1701,10 +1703,10 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     <li><a href="#ref-for-dom-xrframe-createanchor④">7.1. Native anchor</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-restorepersistentanchor">
-   <b><a href="#dom-xrframe-restorepersistentanchor">#dom-xrframe-restorepersistentanchor</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-xrsession-restorepersistentanchor">
+   <b><a href="#dom-xrsession-restorepersistentanchor">#dom-xrsession-restorepersistentanchor</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xrframe-restorepersistentanchor">4. Anchor creation</a>
+    <li><a href="#ref-for-dom-xrsession-restorepersistentanchor">4. Anchor creation</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-xrhittestresult-createanchor">

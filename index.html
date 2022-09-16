@@ -1009,7 +1009,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise②">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm①">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem②">XRSystem</a></code>.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors③">map of persistent anchors</a> does not contain a mapping, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors③">map of persistent anchors</a> does not contain a mapping from <var>uuid</var> to an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①②">XRAnchor</a></code>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject②">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
       <p>If <var>session</var>’s <a data-link-type="dfn" href="https://w3c.github.io/mediacapture-main/#track-ended" id="ref-for-track-ended">ended</a> value is `true`, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject③">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
@@ -1030,9 +1030,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
      <li data-md>
       <p>Let <var>promise</var> be <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#a-new-promise" id="ref-for-a-new-promise③">a new Promise</a> in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm②">relevant realm</a> of this <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsystem" id="ref-for-xrsystem③">XRSystem</a></code>.</p>
      <li data-md>
-      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a>.</p>
+      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑤">map of persistent anchors</a> does not contain a mapping to <var>anchor</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
      <li data-md>
-      <p>If <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a> does not contain a mapping to <var>anchor</var>, <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#reject" id="ref-for-reject⑤">reject</a> <var>promise</var> with <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code>, return <var>promise</var>, and abort these steps.</p>
+      <p>Let <var>anchor</var> be the value of mapping from <var>uuid</var> on <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑥">map of persistent anchors</a>.</p>
      <li data-md>
       <p>Remove the mapping from <var>session</var>’s <a data-link-type="dfn" href="#xrsession-map-of-persistent-anchors" id="ref-for-xrsession-map-of-persistent-anchors⑦">map of persistent anchors</a>.</p>
      <li data-md>
@@ -1105,7 +1105,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    </div>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xranchorset"><code><c- g>XRAnchorSet</c-></code></dfn> {
-  <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①②"><c- n>XRAnchor</c-></a>>;
+  <c- b>readonly</c-> <c- b>setlike</c->&lt;<a data-link-type="idl-name" href="#xranchor" id="ref-for-xranchor①③"><c- n>XRAnchor</c-></a>>;
 };
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③"><c- g>XRFrame</c-></a> {
@@ -1146,7 +1146,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <h2 class="heading settled" data-level="6" id="anchor-removal"><span class="secno">6. </span><span class="content">Anchor removal</span><a class="self-link" href="#anchor-removal"></a></h2>
    <p>When an application is no longer interested in receiving updates to an anchor, it can <a data-link-type="dfn" href="#delete-an-anchor" id="ref-for-delete-an-anchor">delete an anchor</a> by calling <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="ref-for-dom-xranchor-delete">delete()</a></code>.</p>
    <div class="algorithm" data-algorithm="detach-anchor">
-     The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="ref-for-dom-xranchor-delete①">delete()</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①③">XRAnchor</a></code> <var>anchor</var>, MUST <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="delete-an-anchor">delete an anchor</dfn> by running the following steps: 
+     The <code class="idl"><a data-link-type="idl" href="#dom-xranchor-delete" id="ref-for-dom-xranchor-delete①">delete()</a></code> method, when invoked on an <code class="idl"><a data-link-type="idl" href="#xranchor" id="ref-for-xranchor①④">XRAnchor</a></code> <var>anchor</var>, MUST <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="delete-an-anchor">delete an anchor</dfn> by running the following steps: 
     <ol>
      <li data-md>
       <p>If <var>anchor</var>’s <a data-link-type="dfn" href="#xranchor-deleted" id="ref-for-xranchor-deleted③">deleted</a> is <code>true</code>, abort these steps.</p>
@@ -1633,9 +1633,9 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <b><a href="#xranchor">#xranchor</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xranchor">3.1. XRAnchor</a> <a href="#ref-for-xranchor①">(2)</a> <a href="#ref-for-xranchor②">(3)</a> <a href="#ref-for-xranchor③">(4)</a> <a href="#ref-for-xranchor④">(5)</a> <a href="#ref-for-xranchor⑤">(6)</a>
-    <li><a href="#ref-for-xranchor⑥">4. Anchor creation</a> <a href="#ref-for-xranchor⑦">(2)</a> <a href="#ref-for-xranchor⑧">(3)</a> <a href="#ref-for-xranchor⑨">(4)</a> <a href="#ref-for-xranchor①⓪">(5)</a> <a href="#ref-for-xranchor①①">(6)</a>
-    <li><a href="#ref-for-xranchor①②">5. Anchor updates</a>
-    <li><a href="#ref-for-xranchor①③">6. Anchor removal</a>
+    <li><a href="#ref-for-xranchor⑥">4. Anchor creation</a> <a href="#ref-for-xranchor⑦">(2)</a> <a href="#ref-for-xranchor⑧">(3)</a> <a href="#ref-for-xranchor⑨">(4)</a> <a href="#ref-for-xranchor①⓪">(5)</a> <a href="#ref-for-xranchor①①">(6)</a> <a href="#ref-for-xranchor①②">(7)</a>
+    <li><a href="#ref-for-xranchor①③">5. Anchor updates</a>
+    <li><a href="#ref-for-xranchor①④">6. Anchor removal</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="dom-xranchor-anchorspace">

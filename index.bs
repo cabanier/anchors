@@ -142,7 +142,7 @@ XRAnchor {#xr-anchor}
 interface XRAnchor {
   readonly attribute XRSpace anchorSpace;
 
-  [NewObject] Promise<DOMString> requestPersistentHandle();
+  Promise<DOMString> requestPersistentHandle();
 
   undefined delete();
 };
